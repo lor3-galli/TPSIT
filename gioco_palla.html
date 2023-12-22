@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>gioco_palla</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    #container {
+      width: 400px;
+      height: 400px;
+      position: relative;
+      background-color: grey;
+      border: 2px solid black;
+    }
+
+    #palla {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+    }
+
+    #alto{
+      width: 50px;
+      height: 50px;
+      background-color: blue;
+      color: white;
+    }
+    #basso{
+      width: 50px;
+      height: 50px;
+      background-color: blue;
+      color: white;
+    }
+    #destra{
+      width: 50px;
+      height: 50px;
+      background-color: blue;
+      color: white;
+    }
+    #sinistra{
+      width: 50px;
+      height: 50px;
+      background-color: blue;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <button id="alto" onclick="moveImage('alto')">alto</button>
+    <button id="basso" onclick="moveImage('basso')">basso</button>
+    <button id="destra" onclick="moveImage('destra')">destra</button>
+    <button id="sinistra" onclick="moveImage('sinistra')">sinistra</button>
+
+    <div id="palla">
+      <img src="palla.png" alt="imagine" width="50" height="50">
+    </div>
+  </div>
+
+  <script>
+    const movingImage = document.getElementById('palla');
+
+    function moveImage(direction) {
+      const step = 10; // Adjust the step size as needed
+      let currentLeft = parseInt(getComputedStyle(movingImage).left) || 0;
+      let currentTop = parseInt(getComputedStyle(movingImage).top) || 0;
+
+      switch (direction) {
+        case 'alto':
+          movingImage.style.top = `${currentTop - step}px`;
+          break;
+        case 'basso':
+          movingImage.style.top = `${currentTop + step}px`;
+          break;
+        case 'destra':
+          movingImage.style.left = `${currentLeft + step}px`;
+          break;
+        case 'sinistra':
+          movingImage.style.left = `${currentLeft - step}px`;
+          break;
+        default:
+          break;
+      }
+    }
+  </script>
+</body>
+</html>
